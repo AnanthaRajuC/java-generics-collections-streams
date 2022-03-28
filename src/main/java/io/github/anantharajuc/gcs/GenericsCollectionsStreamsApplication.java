@@ -1,6 +1,7 @@
 package io.github.anantharajuc.gcs;
 
 import io.github.anantharajuc.gcs.generics.*;
+import io.github.anantharajuc.gcs.generics.example_automobile.Ferrari;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -57,5 +58,18 @@ public class GenericsCollectionsStreamsApplication {
 		var storeGenericBoundedType1  = new Store_Generic_Bounded_Type<Integer>(6);
 		var storeGenericBoundedType2  = new Store_Generic_Bounded_Type<Double>(5.24);
 		var storeGenericBoundedType3  = new Store_Generic_Bounded_Type<ExampleNumber>(new ExampleNumber(6));
+
+		//Generics with Bounded Type Interface
+		//Ferrari Satisfies the requirements of the Bounded Type Interface
+		var storeGenericBoundedTypeInterface1  = new Store_Generic_Bounded_Type_Interface<Ferrari>(new Ferrari());
+
+		//Generics with wild cards
+		var countries = new String[]{"Nigeria","USA","India"};
+		var scores = new Integer[]{22,46,66,92};
+		var names = new String[]{"John","James","Daniel"};
+		var storeGenericWildCards1 = new Store_Generic_Wild_Cards<>(countries);
+		var storeGenericWildCards2 = new Store_Generic_Wild_Cards<>(scores);
+		var storeGenericWildCards3 = new Store_Generic_Wild_Cards<>(names);
+		storeGenericWildCards1.greaterThan(storeGenericWildCards2);
 	}
 }
